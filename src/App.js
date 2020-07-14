@@ -1,26 +1,61 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react'
+import axios from 'axios'
+import {Jumbotron, Container} from 'react-bootstrap'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './style/mainAppStyle.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import Footer from './footerComponent'
+
+export default class App extends Component {
+  state = {
+    isLoaded: false,
+    pokemonData: []
+  }
+
+  componentDidMount() {
+    axios.get('https://pokeapi.co/api/v2/pokemon/ditto')
+      .then(res => {
+        this.setState({
+          pokemonData: res.data,
+        isLoaded: true
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  render() {
+    if(!this.state.isLoaded) {
+      return(
+        <div id = "mainBody">Loading</div>
+      );
+      
+    }
+    else {
+      return(
+        <div>
+          <div id = "mainBody">
+            <Jumbotron fluid>
+              <Container>
+                <h1>Pokemon API</h1>
+              </Container>
+            </Jumbotron>
+
+            <div id = "pokemonData">
+              <h1> {this.state.pokemonData.name} </h1>
+              <h2>Pokemon ID: #{this.state.pokemonData.id}</h2>
+              <img src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"/>
+            </div>
+
+
+              
+          </div>
+
+          <Footer/>
+        </div>
+      );
+    }
+  }
 }
-
-export default App;

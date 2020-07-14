@@ -1,0 +1,8 @@
+#mainBody {
+    text-align: center;
+    font-family: 'Segoe UI';
+}
+
+#pokemonData {
+    text-transform: capitalize;
+}
