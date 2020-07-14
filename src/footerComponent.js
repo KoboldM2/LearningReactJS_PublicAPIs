@@ -8,7 +8,7 @@ export default class footerComponent extends Component {
         return (
             <footer id = "footerDiv">
                 <div>
-                    Credits to the free API from <a href ="https://pokeapi.co/" target="_blank">Pokeapi.co</a>
+                    Credits to the free API from <a href ="https://pokeapi.co/" target="_blank" rel= "noopener noreferrer">Pokeapi.co</a>
                 </div>
             </footer>
         );
