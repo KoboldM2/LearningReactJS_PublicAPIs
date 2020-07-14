@@ -12,5 +12,5 @@ Packages/Dependencies used:
  - react-bootstrap
  - bootstrap
  - gh-pages
- - react-axios# LearningReactJS_PublicAPIs
+ - react-axios
 
